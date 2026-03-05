@@ -14,7 +14,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[3/4] overflow-hidden">
               <img
-                src="/photo_neyaura/niva/photo_a_propos.JPG"
+                src="/photo_neyaura_webp/niva/photo_a_propos.webp"
                 alt="Neyaura - Photographe"
                 className="w-full h-full object-cover"
               />

@@ -7,11 +7,13 @@ const TAGLINE = "Capturer l'instant, sublimer l'émotion";
 export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background image — fetchpriority=high car c'est le LCP */}
       <img
-        src="/photo_neyaura/niva/photo_accueil.jpeg"
+        src="/photo_neyaura_webp/niva/photo_accueil.webp"
         alt=""
         aria-hidden="true"
+        fetchpriority="high"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
       {/* Light overlay so text stays readable */}
