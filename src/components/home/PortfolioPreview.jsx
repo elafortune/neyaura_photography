@@ -18,7 +18,7 @@ export default function PortfolioPreview() {
             <Link
               key={cat.id}
               to={`/portfolio?category=${cat.id}`}
-              className="group relative aspect-[4/5] overflow-hidden"
+              className="block group relative aspect-[4/5] overflow-hidden"
             >
               {/* Image */}
               <img

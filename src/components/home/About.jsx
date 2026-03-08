@@ -12,11 +12,11 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mt-8">
           {/* Portrait */}
           <div className="relative">
-            <div className="aspect-[3/4] overflow-hidden">
+            <div className="relative aspect-[3/4] overflow-hidden">
               <img
                 src="/photo_neyaura_webp/niva/photo_a_propos.webp"
                 alt="Neyaura - Photographe"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-blush/30" />
