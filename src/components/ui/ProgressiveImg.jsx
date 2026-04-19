@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 
-/**
- * ProgressiveImg — affiche un skeleton animé pendant le chargement,
- * puis fait un fade-in de l'image. Compatible lazy loading natif.
- */
+function buildSrcSet(src) {
+  if (!src.startsWith('/photo_neyaura_webp/')) return null
+  const base = src.slice(0, -'.webp'.length)
+  return `${base}-400w.webp 400w, ${base}-800w.webp 800w, ${base}-1600w.webp 1600w`
+}
+
 export default function ProgressiveImg({ src, alt = '', className = '', style, onClick }) {
   const [status, setStatus] = useState('loading') // 'loading' | 'loaded' | 'error'
   const imgRef = useRef(null)
@@ -39,6 +41,8 @@ export default function ProgressiveImg({ src, alt = '', className = '', style, o
       <img
         ref={imgRef}
         src={src}
+        srcSet={buildSrcSet(src) || undefined}
+        sizes={buildSrcSet(src) ? '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw' : undefined}
         alt={alt}
         loading="lazy"
         decoding="async"

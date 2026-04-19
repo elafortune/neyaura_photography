@@ -1,8 +1,12 @@
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TITLE = 'NEYAURA';
 const SUBTITLE = 'Photography';
 const TAGLINE = "Capturer l'instant, sublimer l'émotion";
+
+// Délai après la fin des animations de lettres (~2.4s)
+const CTA_DELAY = '2.5s';
 
 export default function Hero() {
   return (
@@ -60,6 +64,39 @@ export default function Hero() {
             </span>
           ))}
         </p>
+
+        {/* Séparateur décoratif */}
+        <div
+          className="mt-10 flex items-center justify-center gap-4 opacity-0 animate-fade-in"
+          style={{ animationDelay: CTA_DELAY, animationFillMode: 'forwards' }}
+        >
+          <span className="w-10 h-px bg-espresso/25" />
+          <span className="font-sans text-[9px] tracking-[0.45em] uppercase text-espresso/35">
+            Neyaura Photography
+          </span>
+          <span className="w-10 h-px bg-espresso/25" />
+        </div>
+
+        {/* Boutons CTA */}
+        <div
+          className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 opacity-0 animate-fade-in"
+          style={{ animationDelay: CTA_DELAY, animationFillMode: 'forwards' }}
+        >
+          <Link
+            to="/portfolio"
+            className="font-sans text-[11px] tracking-[0.25em] uppercase px-9 py-3.5 bg-blush text-white transition-all duration-300 hover:bg-blush/85 hover:tracking-[0.3em]"
+          >
+            Voir le portfolio
+          </Link>
+          <a
+            href="https://www.instagram.com/neyaura_photography?igsh=cnU1Y2VsdTY4ZTUw&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-[11px] tracking-[0.25em] uppercase px-9 py-3.5 border border-espresso/35 text-espresso/80 transition-all duration-300 hover:border-blush hover:text-blush hover:tracking-[0.3em]"
+          >
+            Me contacter
+          </a>
+        </div>
       </div>
 
       <a

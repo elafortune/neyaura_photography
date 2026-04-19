@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout'
 const HomePage      = lazy(() => import('./pages/HomePage'))
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'))
 const FAQPage       = lazy(() => import('./pages/FAQPage'))
+const NotFoundPage  = lazy(() => import('./pages/NotFoundPage'))
 
 function PageLoader() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/"          element={<Suspense fallback={<PageLoader />}><HomePage /></Suspense>} />
         <Route path="/portfolio" element={<Suspense fallback={<PageLoader />}><PortfolioPage /></Suspense>} />
         <Route path="/faq"       element={<Suspense fallback={<PageLoader />}><FAQPage /></Suspense>} />
+        <Route path="*"          element={<Suspense fallback={<PageLoader />}><NotFoundPage /></Suspense>} />
       </Route>
     </Routes>
   )

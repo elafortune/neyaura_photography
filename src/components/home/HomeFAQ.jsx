@@ -10,7 +10,7 @@ const faqGroups = [
     questions: [
       {
         q: 'Comment réserver une séance photo ?',
-        a: "La réservation se fait via le formulaire de contact ou en message direct sur Instagram. Après échange sur votre projet, je vous envoie un devis personnalisé. La séance est confirmée à réception d'un acompte de 30 %.",
+        a: "La réservation se fait via le formulaire de contact ou en message direct sur Instagram. Après échange sur votre projet, je vous envoie un devis personnalisé. La séance est confirmée à réception d'un acompte de 50 %.",
       },
       {
         q: 'Quels sont vos tarifs ?',
@@ -18,7 +18,7 @@ const faqGroups = [
       },
       {
         q: 'Faut-il verser un acompte ?',
-        a: "Oui, un acompte de 30 % est demandé à la confirmation. Il permet de bloquer la date dans mon agenda et est déduit du montant total.",
+        a: "Oui, un acompte de 50 % est demandé à la confirmation. Il permet de bloquer la date dans mon agenda et est déduit du montant total.",
       },
       {
         q: "Puis-je annuler ou reporter ma séance ?",

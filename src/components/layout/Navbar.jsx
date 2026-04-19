@@ -112,6 +112,7 @@ export default function Navbar() {
             </Link>
             <a
               href="/#about"
+              onClick={() => setOpen(false)}
               className="font-sans text-sm tracking-[0.2em] uppercase border-b border-transparent pb-0.5 text-espresso hover:text-blush transition-colors"
             >
               À propos

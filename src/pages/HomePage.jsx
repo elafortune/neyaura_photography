@@ -2,6 +2,7 @@ import Hero from '../components/home/Hero';
 import About from '../components/home/About';
 import PortfolioPreview from '../components/home/PortfolioPreview';
 import HomeFAQ from '../components/home/HomeFAQ';
+import CtaSection from '../components/home/CtaSection';
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <About />
       <PortfolioPreview />
       <HomeFAQ />
+      <CtaSection />
     </>
   );
 }

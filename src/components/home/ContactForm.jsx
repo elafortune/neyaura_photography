@@ -3,13 +3,34 @@ import useScrollReveal from '../../hooks/useScrollReveal';
 import SectionHeading from '../ui/SectionHeading';
 import { prestations } from '../../data/portfolioData';
 
+// Remplace l'ID ci-dessous par celui obtenu sur https://formspree.io
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_ID';
+
 export default function ContactForm() {
   const ref = useScrollReveal();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    }
+    setSending(false);
   };
 
   const inputClass =
@@ -79,12 +100,18 @@ export default function ContactForm() {
               className={`${inputClass} resize-none`}
             />
 
+            {error && (
+              <p className="text-center font-sans text-sm text-red-500">
+                Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.
+              </p>
+            )}
             <div className="text-center">
               <button
                 type="submit"
-                className="inline-block font-sans text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-300 px-8 py-3 bg-blush text-white hover:bg-blush-dark"
+                disabled={sending}
+                className="inline-block font-sans text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-300 px-8 py-3 bg-blush text-white hover:bg-blush-dark disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Envoyer
+                {sending ? 'Envoi en cours…' : 'Envoyer'}
               </button>
             </div>
           </form>

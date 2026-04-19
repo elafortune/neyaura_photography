@@ -4,7 +4,7 @@ import ProgressiveImg from '../ui/ProgressiveImg'
 
 const BATCH = 12 // images chargées par lot au scroll
 
-export default function ImageGrid({ images }) {
+export default function ImageGrid({ images, categoryLabel = 'photo' }) {
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const [visibleCount, setVisibleCount] = useState(BATCH)
   const sentinelRef = useRef(null)
@@ -34,6 +34,17 @@ export default function ImageGrid({ images }) {
   const visible = images.slice(0, visibleCount)
   const hasMore = visibleCount < images.length
 
+  if (!images || images.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24 text-center px-6">
+        <p className="font-serif text-2xl text-charcoal/40 mb-3">Galerie en préparation</p>
+        <p className="font-sans text-sm text-taupe/60 tracking-wide">
+          Les photos seront disponibles très prochainement.
+        </p>
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 p-4 md:p-6 max-w-7xl mx-auto">
@@ -50,7 +61,7 @@ export default function ImageGrid({ images }) {
           >
             <ProgressiveImg
               src={src}
-              alt=""
+              alt={`${categoryLabel} — photo ${i + 1} par Neyaura Photography`}
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />
             {/* Hover tint */}
@@ -77,6 +88,7 @@ export default function ImageGrid({ images }) {
         <Lightbox
           images={images}
           index={lightboxIndex}
+          categoryLabel={categoryLabel}
           onClose={() => setLightboxIndex(null)}
           onNavigate={setLightboxIndex}
         />

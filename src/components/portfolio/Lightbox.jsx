@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useRef } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-export default function Lightbox({ images, index, onClose, onNavigate }) {
+export default function Lightbox({ images, index, categoryLabel = 'photo', onClose, onNavigate }) {
   const total = images.length
   const touchStartX = useRef(null)
   const touchStartY = useRef(null)
@@ -81,7 +81,7 @@ export default function Lightbox({ images, index, onClose, onNavigate }) {
         <img
           key={index}
           src={images[index]}
-          alt=""
+          alt={`${categoryLabel} — photo ${index + 1} par Neyaura Photography`}
           className="max-w-full max-h-[90vh] object-contain animate-scale-in select-none"
           draggable={false}
         />
